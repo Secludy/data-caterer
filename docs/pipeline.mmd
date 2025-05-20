@@ -1,0 +1,13 @@
+```mermaid
+graph TD
+    plan["Plan YAML & Task Files"] --> parser["PlanParser"]
+    note right of plan
+      Connection options masked
+    end note
+    parser --> metadata["DataSourceMetadataFactory"]
+    metadata --> generatorFactory["DataGeneratorFactory"]
+    faker["DataFaker"] --> generatorFactory
+    generatorFactory --> fkUtil["ForeignKeyUtil"]
+    fkUtil --> validation["ValidationProcessor"]
+    validation --> deleteProc["DeleteRecordProcessor"]
+```
